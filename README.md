@@ -4,9 +4,9 @@ Simple web scraping project built with Python to extract structured data from a 
 
 ## Overview
 
-This project demonstrates how to collect and structure data from a web page using HTTP requests and HTML parsing.
+TThis project demonstrates how to collect and structure data from a real-world application using HTTP requests and HTML parsing.
 
-The scraper accesses a public webpage, extracts product information, and exports the data into a structured JSON format.
+The scraper extracts product names and prices from a live menu page and exports the data into a structured JSON format.
 
 ## Features
 
@@ -22,19 +22,31 @@ The scraper accesses a public webpage, extracts product information, and exports
 - requests
 - BeautifulSoup
 
+## What I Learned
+
+- How to perform HTTP requests using Python
+- How to parse and navigate HTML with BeautifulSoup
+- Handling missing or inconsistent data during extraction
+- Structuring scraped data into JSON format
+- Basic error handling in data collection workflows
+
 ## ▶️ How to Run
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/legal-data-scraper.git
-cd legal-data-scraper
+git clone https://github.com/luccatrevisan/chewie-scraper.git
+cd chewie-scraper
 ```
 
 2. Create and activate a virtual environment:
 ```bash
 python -m venv venv
+# Windows
 .\venv\Scripts\activate
+
+# macOS / Linux
+source venv/bin/activate
 ```
 
 3. Install dependencies:
@@ -59,8 +71,7 @@ python scraper.py
 
 ## Disclaimer
 
-This project is for educational purposes only.
-All data collected comes from a page that I built in August 2025.
+All data is collected from a publicly accessible page that I built myself.
 
 ## Possible Improvements
 - Add retry logic for failed requests
