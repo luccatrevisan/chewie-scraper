@@ -4,24 +4,44 @@ import json
 
 
 # this code get the brand's menu and return all items with their respective prices
-r = requests.get("https://chewiecookies.com.br")
-html = r.text
+URL = "https://chewiecookies.com.br"
 
-soup = BeautifulSoup(html, "html.parser")
+def fetch_html(url):
+    try:
+        r = requests.get(url)
+        r.raise_for_status()
+        return r.text
+    except requests.exceptions.RequestException as e:
+        print("Error:", e)
 
 
-items = []
-for item in soup.find_all(class_ = "item-produto"):
-    '''get the name and the price'''
-    name = item.h3.text
-    price = item.strong.text
+def parse_html(html):
+    if not html:
+        return []
 
-    items.append({
-        "name" : name.strip(),
-        "price" : price.strip()
-    })
+    soup = BeautifulSoup(html, "html.parser")
 
-print(items)
+    items = []
+    for item in soup.find_all(class_ = "item-produto"):
+        '''get the name and the price'''
+        name_tag = item.find("h3")
+        price_tag = item.find("strong")
 
-# with open("items.json", "w", encoding="utf-8") as file:
-#    json.dump(items, file, ensure_ascii=False, indent=2)
+        if name_tag and price_tag:
+            items.append({
+                "name" : name_tag.get_text(strip=True),
+                "price" : price_tag.get_text(strip=True)
+            })
+    
+    return items
+
+
+def save_html(items):
+    with open("items.json", "w", encoding="utf-8") as file:
+        json.dump(items, file, ensure_ascii=False, indent=2)
+
+
+if __name__ == "__main__":
+    html = fetch_html(URL)
+    items = parse_html(html)
+    save_html(items)
