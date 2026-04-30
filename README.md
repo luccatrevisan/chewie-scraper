@@ -78,3 +78,10 @@ All data is collected from a publicly accessible page that I built myself.
 - Store data in a database (PostgreSQL)
 - Expose data through a REST API (Django REST Framework)
 - Add CLI arguments (e.g., limit number of items)
+
+## ✉️ Contact
+
+Lucca - [LinkedIn](https://www.linkedin.com/in/lucca-trevisan-86a181378/) | luccatrevisandev@gmail.com
+
+---
+**MIT License • Built with focus on learning and real-world problem solving**
